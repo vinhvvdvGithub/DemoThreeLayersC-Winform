@@ -46,5 +46,10 @@ namespace QuanLyNhanVien
                 MessageBox.Show("Xin hãy nhập đầy đủ");
             }
         }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

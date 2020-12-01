@@ -35,5 +35,9 @@ namespace BUS
         {
            return UserDAO.Instance.Them( newUSer);
         }
+        public bool Xoa()
+        {
+
+        }
     }
 }

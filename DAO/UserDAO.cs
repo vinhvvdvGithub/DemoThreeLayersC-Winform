@@ -44,6 +44,16 @@ namespace DAO
             }
             return flag ;
         }
+        public bool Xoa(string id)
+        {
+            string query = "SP_DeleteUser @ID ";
+
+            if (DataProvider.Instance.ExecuteNonQuery(query, new object[] {id}) != 0)
+            {
+                return true;
+            }
+            return false;
+        }
         //public List<User> Xem()
         //{
         //    List<User> users = new List<User>();
