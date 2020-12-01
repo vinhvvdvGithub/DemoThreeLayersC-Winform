@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DTO
 {
-    public class User
+    public class UserDTO
     {
         private string id;
         private string name;
@@ -19,7 +19,7 @@ namespace DTO
         public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
         public bool Sex { get => sex; set => sex = value; }
 
-        public User(string id,string name,DateTime dob,string info,bool sex)
+        public UserDTO(string id,string name,DateTime dob,string info,bool sex)
         {
             this.id = id;
             this.name = name;

@@ -23,25 +23,44 @@ namespace DAO
             }
 
         }
-        private UserDAO() { }
+        public UserDAO() { }
       
-        public List<User> Xem()
+        public DataTable Xem()
         {
-            List<User> users = new List<User>();
             string query = "select * from Users";
-            DataTable data =DataProvider.Instance.ExecuteQuery(query);
-           
-            foreach (DataRow item in data.Rows)
-            {
-                string id =item.Cells["ID"].Value.ToString();
-                string name=item.Cells["Name"].Value.ToString();
-                DateTime dob= (DateTime) item.Cells["DateOfBirth"].Value;
-                string info= item.Cells["Info"].Value.ToString();
-                bool sex= (bool)item.Cells["Sex"].Value;
-                User newU = new User(id,name,dob,info,sex);
-                users.Add(newU);
-            }
-            return users;
+            return DataProvider.Instance.ExecuteQuery(query);
         }
+        public bool Them(UserDTO newUser)
+        {
+            bool flag = false;
+            string query = "SP_InsertUser @ID , @Name , @DateofBirth , @info , @Sex";
+            object[] para = new object[]
+            {
+                 newUser
+            };
+            if (DataProvider.Instance.ExecuteNonQuery(query, para) != 0)
+            {
+                flag= true;
+            }
+            return flag ;
+        }
+        //public List<User> Xem()
+        //{
+        //    List<User> users = new List<User>();
+        //    string query = "select * from Users";
+        //    DataTable data =DataProvider.Instance.ExecuteQuery(query);
+           
+        //    foreach (DataRow item in data.Rows)
+        //    {
+        //        string id =item.Cells["ID"].Value.ToString();
+        //        string name=item.Cells["Name"].Value.ToString();
+        //        DateTime dob= (DateTime) item.Cells["DateOfBirth"].Value;
+        //        string info= item.Cells["Info"].Value.ToString();
+        //        bool sex= (bool)item.Cells["Sex"].Value;
+        //        User newU = new User(id,name,dob,info,sex);
+        //        users.Add(newU);
+        //    }
+        //    return users;
+        //}
     }
 }

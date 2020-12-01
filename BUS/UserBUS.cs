@@ -4,11 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DAO;
+using DTO;
+
 namespace BUS
 {
     public class UserBUS
     {
         private static UserBUS instance;
+        
 
         public static UserBUS Instance
         {
@@ -27,6 +30,10 @@ namespace BUS
         public void Xem(DataGridView data)
         {
             data.DataSource = UserDAO.Instance.Xem();
+        }
+        public bool Them(UserDTO newUSer)
+        {
+           return UserDAO.Instance.Them( newUSer);
         }
     }
 }
