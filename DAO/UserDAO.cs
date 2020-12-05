@@ -46,7 +46,7 @@ namespace DAO
         }
         public bool Xoa(string id)
         {
-            string query = "SP_DeleteUser @ID ";
+            string query = "SP_DeleteUser @ID";
 
             if (DataProvider.Instance.ExecuteNonQuery(query, new object[] {id}) != 0)
             {

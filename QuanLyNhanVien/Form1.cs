@@ -22,7 +22,8 @@ namespace QuanLyNhanVien
             UserBUS.Instance.Xem(dgvUser);
         }
 
-       
+        
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (txtID.Text != "" && txtName.Text != "" && txtThongtin.Text != "")
@@ -49,7 +50,15 @@ namespace QuanLyNhanVien
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-
+            if (UserBUS.Instance.Xoa(dgvUser))
+            {
+                MessageBox.Show("Xoa thanh cong");
+                btnXem_Click( sender,  e);
+            }
+            else
+            {
+                MessageBox.Show("Xoa khong thanh cong");
+            }
         }
     }
 }

@@ -35,9 +35,10 @@ namespace BUS
         {
            return UserDAO.Instance.Them( newUSer);
         }
-        public bool Xoa()
+        public bool Xoa(DataGridView data)
         {
-
+            string id = data.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString();
+            return UserDAO.Instance.Xoa(id);
         }
     }
 }

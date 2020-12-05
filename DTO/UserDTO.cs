@@ -19,6 +19,7 @@ namespace DTO
         public DateTime DateOfBirth { get => dateOfBirth; set => dateOfBirth = value; }
         public bool Sex { get => sex; set => sex = value; }
 
+        public UserDTO() { }
         public UserDTO(string id,string name,DateTime dob,string info,bool sex)
         {
             this.id = id;
