@@ -19,6 +19,7 @@ namespace QuanLyNhanVien
 
         private void btnXem_Click(object sender, EventArgs e)
         {
+
             UserBUS.Instance.Xem(dgvUser);
         }
 
@@ -26,25 +27,14 @@ namespace QuanLyNhanVien
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            if (txtID.Text != "" && txtName.Text != "" && txtThongtin.Text != "")
+            if (UserBUS.Instance.Them(dgvUser))
             {
-                // Tạo DTo
-                 UserDTO tv = new UserDTO(txtID.Text, txtName.Text, dateTimePicker1.Value, txtThongtin.Text, true); // Vì ID tự tăng nên để ID số gì cũng dc
-
-                // Them
-                if (UserBUS.Instance.Them(tv))
-                {
-                    MessageBox.Show("Thêm thành công");
-                     UserBUS.Instance.Xem(dgvUser); // refresh datagridview
-                }
-                else
-                {
-                    MessageBox.Show("Thêm ko thành công");
-                }
+                MessageBox.Show("Them thanh cong");
+                btnXem_Click(sender, e);
             }
             else
             {
-                MessageBox.Show("Xin hãy nhập đầy đủ");
+                MessageBox.Show("Them khong thanh cong");
             }
         }
 
@@ -72,6 +62,14 @@ namespace QuanLyNhanVien
             {
                 MessageBox.Show("Sua khong thanh cong");
             }
+        }
+
+        private void dgvUser_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow row = dgvUser.SelectedCells[0].OwningRow;
+            txtName.Text= row.Cells["Name"].Value.ToString();
+            txtID.Text = row.Cells["ID"].Value.ToString();
+            dateTimePicker1.Value = (DateTime)row.Cells["DateOfBirth"].Value;
         }
     }
 }

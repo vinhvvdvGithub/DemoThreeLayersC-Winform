@@ -31,9 +31,25 @@ namespace BUS
         {
             data.DataSource = UserDAO.Instance.Xem();
         }
-        public bool Them(UserDTO newUSer)
+        public bool Them(DataGridView data)
         {
-           return UserDAO.Instance.Them( newUSer);
+            DataGridViewRow row = data.SelectedCells[0].OwningRow;
+            // string oldid = row.Cells["ID"].Value.ToString();
+
+            string id = row.Cells["ID"].Value.ToString();
+            string name = row.Cells["Name"].Value.ToString();
+            DateTime dateofbirth;
+
+            dateofbirth = (DateTime)row.Cells["DateOfBirth"].Value;
+            string info = row.Cells["Info"].Value.ToString();
+            bool sex = (bool)row.Cells["Sex"].Value;
+
+
+            string ID = data.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString();
+            UserDTO user = new UserDTO() { Id = id, Name = name, DateOfBirth = dateofbirth, Info = info, Sex = sex };
+
+           // return UserDAO.Instance.Sua(ID, user);
+            return UserDAO.Instance.Them(user);
         }
         public bool Xoa(DataGridView data)
         {
@@ -43,7 +59,7 @@ namespace BUS
         public bool Sua(DataGridView data)
         {
             DataGridViewRow row = data.SelectedCells[0].OwningRow;
-            string oldid = row.Cells["ID"].Value.ToString();
+           // string oldid = row.Cells["ID"].Value.ToString();
 
             string id = row.Cells["ID"].Value.ToString();
             string name = row.Cells["Name"].Value.ToString();
@@ -55,7 +71,7 @@ namespace BUS
 
 
             string ID = data.SelectedCells[0].OwningRow.Cells["ID"].Value.ToString();
-            UserDTO user = new UserDTO();
+            UserDTO user = new UserDTO() { Id = id, Name = name, DateOfBirth = dateofbirth, Info = info, Sex = sex };
 
             return UserDAO.Instance.Sua(ID,user);
         }

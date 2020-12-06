@@ -56,6 +56,7 @@
             this.dgvUser.RowTemplate.Height = 24;
             this.dgvUser.Size = new System.Drawing.Size(800, 176);
             this.dgvUser.TabIndex = 0;
+            this.dgvUser.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUser_CellContentClick);
             // 
             // txtID
             // 

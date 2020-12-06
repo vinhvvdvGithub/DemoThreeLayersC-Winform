@@ -30,19 +30,19 @@ namespace DAO
             string query = "select * from Users";
             return DataProvider.Instance.ExecuteQuery(query);
         }
-        public bool Them(UserDTO newUser)
+        public bool Them(UserDTO user)
         {
-            bool flag = false;
+          
             string query = "SP_InsertUser @ID , @Name , @DateofBirth , @info , @Sex";
             object[] para = new object[]
             {
-                 newUser
+                 user.Id,user.Name,user.DateOfBirth,user.Info,user.Sex
             };
             if (DataProvider.Instance.ExecuteNonQuery(query, para) != 0)
             {
-                flag= true;
+                return true;
             }
-            return flag ;
+            return false ;
         }
         public bool Xoa(string id)
         {
