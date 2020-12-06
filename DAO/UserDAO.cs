@@ -54,6 +54,17 @@ namespace DAO
             }
             return false;
         }
+        public bool Sua(string id,UserDTO user) {
+            string query = "SP_UpdateUser @ID , @Name , @DateofBirth , @info , @Sex";
+            object[] para = new object[] {user.Id,user.Name,user.DateOfBirth,user.Info,user.Sex };
+
+            if (DataProvider.Instance.ExecuteNonQuery(query, para) != 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
         //public List<User> Xem()
         //{
         //    List<User> users = new List<User>();

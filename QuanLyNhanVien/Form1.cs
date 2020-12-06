@@ -60,5 +60,18 @@ namespace QuanLyNhanVien
                 MessageBox.Show("Xoa khong thanh cong");
             }
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            if (UserBUS.Instance.Sua(dgvUser))
+            {
+                MessageBox.Show("Sua thanh cong");
+                btnXem_Click(sender, e);
+            }
+            else
+            {
+                MessageBox.Show("Sua khong thanh cong");
+            }
+        }
     }
 }

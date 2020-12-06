@@ -116,6 +116,7 @@
             this.btnSua.TabIndex = 8;
             this.btnSua.Text = "sua";
             this.btnSua.UseVisualStyleBackColor = true;
+            this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
             // label1
             // 
